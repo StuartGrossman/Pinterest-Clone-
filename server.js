@@ -6,9 +6,9 @@ var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var passport = require('passport'); //passport below mongoose
 //models here
-require('./models/Movie');
+require('./models/Pin');
 require('./models/User');
-require('./models/Movie_Comment');
+require('./models/PinComment');
 //passport at the bottom of the models
 require('./config/passport');
 //connection
@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(passport.initialize());
 
-// var movieRoutes = require('./routes/MovieRoutes');
+var pinRoutes = require('./routes/PinRoutes');
 // var userRoutes = require('./routes/UserRoutes');
 // var commentRoutes = require('./routes/CommentRoutes');
 // //on homepage load, render the index page

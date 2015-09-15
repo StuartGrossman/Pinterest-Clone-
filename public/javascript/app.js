@@ -7,6 +7,11 @@
 		$stateProvider.state('Home',{
 			url: '/',
 			templateUrl: 'views/home.html'
+		}).state('CreatePin', {
+			url: '/createPin',
+			controller: 'CeatePinController',
+			templateUrl: 'views/CreatePin.html',
+			controllerAs: 'vm'
 		})
 		$urlRouterProvider.otherwise('/');
 	}

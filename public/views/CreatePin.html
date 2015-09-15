@@ -1,0 +1,14 @@
+<form class="well container" ng-submit="vm.createMovie()">
+	<center><h1>New Pin</h1><center>
+	<label>Title</label><br/>
+	<input required class="form-control" placeholder="Title..." ng-model="vm.pin.title" />	
+
+	<label>Img</label><br/>
+	<input required class="form-control" placeholder="Img..." ng-model="vm.pin.img" />	
+	<label>Description</label><br/>
+	<input required class="form-control" ng-list placeholder="Description..." ng-model="vm.pin.desc" />					
+	<div style="text-align: center;">
+		<br><br>
+		<button type="submit" class="btn btn-success">Submit</button>
+	</div>
+</form>
