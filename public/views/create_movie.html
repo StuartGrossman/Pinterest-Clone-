@@ -1,0 +1,26 @@
+<form class="well container" ng-submit="vm.createMovie()">
+	<label>Title</label><br/>
+	<input required class="form-control" placeholder="Movie Title..." ng-model="vm.movie.title" />	
+	<label>Created</label><br/>
+	<input required class="form-control" placeholder="Movie Year..." ng-model="vm.movie.created" />	
+	<label>Rating</label><br/>
+	<select required ng-model="vm.movie.rating" class="form-control">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+	</select>
+	<label>Director</label><br/>
+	<input required class="form-control" placeholder="Movie Director..." ng-model="vm.movie.director" />	
+	<label>Actors</label><br/>
+	<input required class="form-control" ng-list placeholder="Movie Actors..." ng-model="vm.movie.actors" />					
+	<div style="text-align: center;">
+		<button type="submit" class="btn btn-success">Submit</button>
+	</div>
+</form>

@@ -1,0 +1,9 @@
+.movie-well {
+	height: 300px;
+	position: relative;
+}
+
+.movie-button {
+	bottom: 12px;
+	position: absolute;
+}
