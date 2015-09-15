@@ -33,16 +33,16 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(passport.initialize());
 
-var movieRoutes = require('./routes/MovieRoutes');
-var userRoutes = require('./routes/UserRoutes');
-var commentRoutes = require('./routes/CommentRoutes');
-//on homepage load, render the index page
+// var movieRoutes = require('./routes/MovieRoutes');
+// var userRoutes = require('./routes/UserRoutes');
+// var commentRoutes = require('./routes/CommentRoutes');
+// //on homepage load, render the index page
 app.get('/', function(req, res) {
   res.render('index');
 });
-app.use('/api/movies', movieRoutes);
-app.use('/api/comments', commentRoutes);
-app.use('/api/users', userRoutes);
+// app.use('/api/movies', movieRoutes);
+// app.use('/api/comments', commentRoutes);
+// app.use('/api/users', userRoutes);
 
 var server = app.listen(port, function() {
   var host = server.address().address;
