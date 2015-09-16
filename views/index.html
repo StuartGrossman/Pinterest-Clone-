@@ -22,11 +22,11 @@
 			        <span class="icon-bar"></span>
 			      </button> -->
 			      <a class="navbar-brand" ui-sref="Home">Pint</a>
-			      <a class="navbar-brand" ui-sref="CreatePin">Create Pin</a>
+			      <a ng-show="nav.status.username" class="navbar-brand" ui-sref="CreatePin">Create Pin</a>
 			      
 				  <a ng-show="!nav.status.username" class="navbar-brand" ui-sref="RegisterUser">Register</a>
 				  <a ng-show="!nav.status.username" class="navbar-brand" ui-sref="LogIn">Login</a>
-				  <a ng-show="nav.status.username" class="navbar-brand">{{nav.status.username}}</a>
+				  <a ng-show="nav.status.username" class="navbar-brand" ui-sref="Profile" ng-click="nav.getUser()">{{nav.status.username}}</a>
 				  <a ng-show="nav.status.username" class="navbar-brand" ng-click="nav.logout();">LogOut</a>
 			      
 			    <!-- 

@@ -34,15 +34,15 @@
 		vm.createComment = function() {
 			var comment = {
 				body: vm.newComment,
-				movie: $stateParams.id
+				pin: $stateParams.id
 			};
 			HomeFactory.createComment(comment).then(function(res) {
 				vm.newComment = '';
 				// console.log(res);
 				// vm.movie.comments.push(res);
 				HomeFactory.getPin($stateParams.id).then(function(res) {
-					vm.movie = res;
-					console.log(vm.movie);
+					vm.pin = res;
+					console.log(vm.pin);
 				});
 			})
 		}

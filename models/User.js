@@ -9,7 +9,8 @@ var UserSchema = new mongoose.Schema({
 	image: String,
 	passwordHash: String,
 	salt: String,
-	comments: [{type: mongoose.Schema.Types.ObjectId, ref: "PinComment"}]
+	comments: [{type: mongoose.Schema.Types.ObjectId, ref: "PinComment"}],
+	pins: [{type: mongoose.Schema.Types.ObjectId, ref: "Pin"}]
 });
 
 UserSchema.methods.generateJWT = function() {

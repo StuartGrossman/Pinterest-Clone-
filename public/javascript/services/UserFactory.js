@@ -10,6 +10,8 @@
 			o.status.isLoggedIn = true;
 			o.status._id = getId();
 		}
+		console.log(o.status)
+
 
 		function getId(){
 			return JSON.parse(urlBase64Decoder(getToken().split('.')[1])).id;
@@ -31,12 +33,26 @@
 			if(token) {
 				var payload = JSON.parse(urlBase64Decoder(token.split(".")[1]));
 				if(payload.exp > Date.now() / 1000) {
+					console.log('this is the payload ' +  payload)
 					return payload;
+
 				}
 			} else {
 				return false;
 			}
 		}
+
+		o.getUser = function(id){
+			console.log(id)
+			console.log('inside getUser Function!')
+			var q = $q.defer();
+			$http.get('/users/' + id).success(function(res){
+				console.log('getting res from user request')
+				q.resolve(res);
+			})
+			return q.promise;
+		}
+
 
 		o.register = function(user) {
 			var q = $q.defer();

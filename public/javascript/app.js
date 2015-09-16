@@ -24,6 +24,11 @@
 		}).state('LogIn', {
 			url: '/login',
 			templateUrl: '/views/Login.html'
+		}).state('Profile', {
+			url: '/profile',
+			templateUrl: 'views/Profile.html',
+			controller: 'NavBarController',
+			controllerAs: 'vm'
 		})
 		$urlRouterProvider.otherwise('/');
 	}

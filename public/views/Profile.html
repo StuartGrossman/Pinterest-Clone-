@@ -1,0 +1,35 @@
+<center><div class='well'>
+	<h1>This is profile Page</h1>
+	<h2>Username: {{nav.pinUser.username}}</h2>
+	<div>
+		<img src="{{nav.pinUser.image}}">
+	</div>
+	<div>
+		<h1>Your Pins</h1>
+		<div ng-repeat="pin in nav.pinUser.pins">
+			<div>
+				<div class="well pininfo">
+
+				
+					<h3>{{pin.title}}</h3>
+					
+					<div class="well imginfo">
+						<img src="{{pin.img}}">
+					</div>
+					<div class="well">
+						{{pin.desc}}<br>
+						{{pin.likes}}
+					</div>
+					<button class="btn btn-warning">
+						Edit
+					</button>
+					<button class="btn btn-danger">
+						Delete
+					</button>
+		
+	
+				</div>
+			</div>
+		</div>
+	</div>
+</div></center>

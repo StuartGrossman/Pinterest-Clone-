@@ -2,8 +2,9 @@ var mongoose = require('mongoose');
 var Pin = mongoose.model('Pin');
 var express = require('express');
 var router = express.Router();
-// var PinComment = mongoose.model('PinComment');
+var PinComment = mongoose.model('PinComment');
 var jwt = require("express-jwt");
+var User = mongoose.model('User');
 
 
 var auth = jwt({
@@ -24,6 +25,9 @@ router.param('id', function(req, res, next, id) {
 		req.pin = pin
 		next();
 	})
+	// console.log('this is PIN ' +  pin)
+	// 	next();
+	// User.update({_id: })
 });
 
 router.post('/', function(req, res){
@@ -32,7 +36,23 @@ router.post('/', function(req, res){
 	pin.save(function(err, response){
 		if(err) return res.status(500).send({err: "The server is having issues."});
 		if(!response) return res.status(400).send({err: "Could not create that pin."});
-		res.send({_id: response._id});
+		// console.log('------------------------------')
+		console.log(response.user);
+		User.update({_id: response.user}, 	{$push: 
+												
+												{
+													pins: {
+														_id: response._id
+													}
+												}
+					}, function(err, user){
+						if(err) return res.status(400).send({err: 'The client fuced up'});
+						if(!user) return res.status(500).send({err: 'the server could not find a user'});
+						console.log('found user ' + user + 'line 51');
+						res.send()
+					})
+		// console.log('made it')
+		// res.send({_id: response._id});
 	})
 })
 

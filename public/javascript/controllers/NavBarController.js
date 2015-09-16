@@ -29,5 +29,14 @@
 			vm.status = $rootScope._user;
 			$state.go("Home");
 		}
+		vm.getUser = function(){
+			console.log('working inside get userFunction')
+			UserFactory.getUser(vm.status.id).then(function(res){
+				vm.pinUser = res
+				console.log('got user')
+				console.log(vm.pinUser)
+			})
+		}
+		vm.getUser();
 	}
 })();

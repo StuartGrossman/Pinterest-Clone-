@@ -10,22 +10,23 @@ var auth = jwt({
   'secret': '_secret_sauce'
 });
 
-// router.param('id', function(req, res, next, id){
-//   console.log(id)
-
-//   PinComment.findOne({_id: id}).exec(function(){
-    
-//   })
+router.param('id', function(req, res, next, id){
+  console.log(id)
+  console.log('inside commentRoutes')
+  PinComment.findOne({_id: id}).exec(function(err, pin){
+    console.log(pin)
+      // pin.save({user: })
+  })
   
-//   next();
-// })
+  next();
+})
 
 var temp;
 
 router.post('/', auth, function(req, res) {
 
   User.find({_id: req.payload.id}).exec(function(err, response){
-    // console.log(req.payload);
+    console.log(req.payload);
     temp = response;
     // console.log('this is response ' + temp)
     temp = temp[0].name
@@ -40,7 +41,8 @@ router.post('/', auth, function(req, res) {
       if (!result) return res.status(400).send({
         err: "Could not create comment"
       });
-      Pin.update({ _id: comment.movie}, 
+        
+      Pin.update({ _id: comment.pin}, 
         {$push: 
           {
             comments: {
@@ -66,9 +68,9 @@ router.delete('/:id', auth, function(req, res){
   console.log(req.params.id)
   var comment_id = req.params.id;
   PinComment.findOne({_id: req.params.id}).exec(function(err, response){
-    console.log(response)
+    // console.log(response)
     response.update({deleted: false}).exec(function(err, comment){
-      console.log(comment);
+      // console.log(comment);
     })
 
     res.send();
