@@ -1,0 +1,32 @@
+<div ng-controller="PinInfoController as vm">
+	<center><div class="well pininfo">
+
+		<div class="well">
+			<h1>{{vm.pin.title}}</h1>
+		</div>
+		<div class="well imginfo">
+			<img src="{{vm.pin.img}}">
+		</div>
+		<div class="well">
+			{{vm.pin.desc}}
+		</div>
+		
+	
+	</div>
+	<div class="well container" ng-if="nav.status.id">
+	<div style="text-align:center;">
+		<button class="btn btn-lg btn-primary" ng-show="!addComment" ng-click="addComment = true;">Add Comment</button>
+		<div class="form-inline" ng-show="addComment">
+			<input class="form-control" style="width: 80%" ng-model="vm.newComment" placeholder="Comment...">
+			<button class="btn btn-success" ng-click="addComment = false; vm.createComment();">Submit</button>
+			<button class="btn btn-danger" ng-click="addComment = false;">Cancel</button>
+		</div>
+	</div>
+</div>
+</center>
+	<div ng-repeat="comment in nav.status.comments">
+		<div class="well">
+			{{comment}}
+		</div>
+	</div>
+</div>

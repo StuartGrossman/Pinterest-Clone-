@@ -12,7 +12,7 @@ require('./models/PinComment');
 //passport at the bottom of the models
 require('./config/passport');
 //connection
-mongoose.connect('mongodb://localhost/movies_app');
+mongoose.connect('mongodb://localhost/pin_app');
 
 app.set('views', path.join(__dirname, 'views'));
 //set the view engine that will render HTML from the server to the client
@@ -34,15 +34,15 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 var pinRoutes = require('./routes/PinRoutes');
-// var userRoutes = require('./routes/UserRoutes');
-// var commentRoutes = require('./routes/CommentRoutes');
+var userRoutes = require('./routes/UserRoutes');
+var commentRoutes = require('./routes/CommentRoutes');
 // //on homepage load, render the index page
 app.get('/', function(req, res) {
   res.render('index');
 });
-// app.use('/api/movies', movieRoutes);
-// app.use('/api/comments', commentRoutes);
-// app.use('/api/users', userRoutes);
+app.use('/pin', pinRoutes);
+app.use('/comments', commentRoutes);
+app.use('/users', userRoutes);
 
 var server = app.listen(port, function() {
   var host = server.address().address;

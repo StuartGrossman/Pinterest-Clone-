@@ -1,9 +1,18 @@
-.movie-well {
-	height: 300px;
-	position: relative;
+.likes{
+	font-size: 30px;
 }
+.pin{
+	height: auto;
+	width: 236px;
+}
+.img{
+	
+	width: 236px;
+}
+.imginfo{
+	height: auto;
+	width: auto;
+}
+.pininfo{
 
-.movie-button {
-	bottom: 12px;
-	position: absolute;
 }
