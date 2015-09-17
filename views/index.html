@@ -28,6 +28,7 @@
 				  <a ng-show="!nav.status.username" class="navbar-brand" ui-sref="LogIn">Login</a>
 				  <a ng-show="nav.status.username" class="navbar-brand" ui-sref="Profile" ng-click="nav.getUser()">{{nav.status.username}}</a>
 				  <a ng-show="nav.status.username" class="navbar-brand" ng-click="nav.logout();">LogOut</a>
+				  <input class="navbar-brand" placeholder="search Pin by Name" ng-model="searchPin">
 			      
 			    <!-- 
 			      <a ng-show="!nav.status.username"class="navbar-brand navbar-right" ui-sref="">{{nav.status.username}}</a>

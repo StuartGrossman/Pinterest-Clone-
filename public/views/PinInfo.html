@@ -4,7 +4,12 @@
 	<div class="well pininfo">
 		<div class="well">
 			<span>
-				<h3>{{vm.pin.user.name}}</h3> <span><img class="img-responsive img-circle" src="{{vm.pin.user.image}}"></span>
+				<h3>{{vm.pin.user.name}}</h3> <span><img class="img-responsive img-circle" src="{{vm.pin.user.image}}"> 
+				<button ng-click="vm.addFriend(vm.pin.user._id)" ng-show="vm.pin.user._id !== vm.status._id" class="btn btn-success">
+					Add {{vm.pin.user.name}} as Friend!
+				</button>
+				<!-- {{vm.pin.user}} -->
+			</span>
 			</span>
 			<span class="pintext"><h1>{{vm.pin.title}}</h1> <h3>{{vm.pin.likes}}</h3></span>
 		</div>

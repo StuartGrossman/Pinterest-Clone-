@@ -27,8 +27,8 @@
 		</div>
 	</div>
 </div> -->
-<div ng-controller="HomeController as vm " class="pinGrid">
-	<div ng-repeat="pin in vm.pins" ng-show="pin.deleted" class="pinGridWrapper">
+<div ng-controller="HomeController as vm" class="pinGrid">
+	<div ng-repeat="pin in vm.pins | filter:searchPin" ng-show="pin.deleted" class="pinGridWrapper">
 		<div class="pin">
 			<div>
 				<h3 class="textCenter">{{pin.title}}</h3>

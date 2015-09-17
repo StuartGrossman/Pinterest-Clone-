@@ -102,6 +102,14 @@
 			})
 			 return q.promise;
 		}
+		o.addFriend = function(id, userid){
+			var q = $q.defer();
+			console.log(userid + 'this is user id')
+			$http.post('/users/add/friend/' + id + '/' + userid, null, getAuth()).success(function(res){
+				q.resolve();
+			})
+			  return q.promise;
+		}
 		return o;
 	}
 })();

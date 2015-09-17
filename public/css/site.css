@@ -33,12 +33,15 @@
 	width: 100%;
 	font-family: 'Source Sans Pro', sans-serif;
 }*/
+.searchbar{
+	margin-left: 25px;
+}
 .slide{
 	margin-left:12px;
 }
 .likes{
 	font-size: 25px;
-	margin-left: 9px;
+	margin-left: 1px;
 }
 .borderRadius {
 	border-radius: 3px 3px 3px 3px;

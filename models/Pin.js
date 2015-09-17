@@ -9,6 +9,9 @@ var PinSchema = mongoose.Schema({
 	comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PinComment' }],
 	user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
 	deleted: {type: Boolean, default: true}
+	// ,
+	// userlikes: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+	// userdislikes: type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 mongoose.model('Pin', PinSchema);

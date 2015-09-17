@@ -25,15 +25,7 @@ router.param('id', function (req, res, next, id) {
 		req.pin = pin
 		next();
 	})
-	// Pin.findOne({_id:id}).populate('user').exec(function (err, pin){
-	// 	console.log('trying to populate users')
-	// 	console.log(pin)
-	// 	// req.pin = pin
-	// 	next();
-	// })
-	// console.log('this is PIN ' +  pin)
-	// 	next();
-	// User.update({_id: })
+	
 });
 router.post('/delete/:id', auth, function (req, res){
 	// console.log('tyring to delete pin in server')
@@ -60,6 +52,7 @@ router.post('/add/:id', auth, function (req, res) {
 	  	// console.log(response)
 	  	var updatedLikes = response.likes
 	  	// console.log(updatedLikes)
+	  	//check ----
 	  	updatedLikes = updatedLikes + 1
 	  	Pin.update({_id: response.id}, {likes: updatedLikes}, function (err, likes) {
 	  		res.send()

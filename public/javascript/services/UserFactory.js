@@ -9,13 +9,17 @@
 		if(getToken()){
 			o.status.isLoggedIn = true;
 			o.status._id = getId();
+			// o.status.friends = getFriends();
 		}
 		console.log(o.status)
-
+		// console.log()
 
 		function getId(){
 			return JSON.parse(urlBase64Decoder(getToken().split('.')[1])).id;
 		}
+		// function getFriends(){
+		// 	return JSON.parse(urlBase64Decoder(getToken().split('.')[1])).friends;
+		// }
 		function setToken(token) {
 			localStorage.setItem("token", token);
 		}
