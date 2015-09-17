@@ -2,8 +2,10 @@
 	<center>
 	
 	<div class="well pininfo">
-
 		<div class="well">
+			<span>
+				<h3>{{vm.pin.user.name}}</h3> <span><img class="img-responsive img-circle" src="{{vm.pin.user.image}}"></span>
+			</span>
 			<span class="pintext"><h1>{{vm.pin.title}}</h1> <h3>{{vm.pin.likes}}</h3></span>
 		</div>
 		<div class="well imginfo">
@@ -31,7 +33,7 @@
 					
 					
 						<div>
-							<img  src="{{comment.userimg}}" class="img-responsive">
+							<img  src="{{comment.userimg}}" class="img-responsive img-circle">
 						</div>
 						<br>
 						<br>

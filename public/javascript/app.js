@@ -29,6 +29,11 @@
 			templateUrl: 'views/Profile.html',
 			controller: 'NavBarController',
 			controllerAs: 'vm'
+		}).state('EditPin', {
+			url: '/pin/edit/:id',
+			controller: 'PinInfoController',
+			controllerAs: 'vm',
+			templateUrl: '/views/EditPin.html'
 		})
 		$urlRouterProvider.otherwise('/');
 	}

@@ -27,8 +27,8 @@
 		</div>
 	</div>
 </div> -->
-<div ng-controller="HomeController as vm" class="pinGrid">
-	<div ng-repeat="pin in vm.pins" class="pinGridWrapper">
+<div ng-controller="HomeController as vm " class="pinGrid">
+	<div ng-repeat="pin in vm.pins" ng-show="pin.deleted" class="pinGridWrapper">
 		<div class="pin">
 			<div>
 				<h3 class="textCenter">{{pin.title}}</h3>
@@ -36,17 +36,17 @@
 				<img ng-src="{{pin.img}}">
 			    <h4 class="textCenter">
 			    	{{pin.desc}}</h4> 
-			    <button ng-click="vm.subOne($index)"  class="borderRadius marginBottom btn btn-warning">
+			    <button ng-click="vm.subOne($index)"  class=".minbutton btn btn-warning">
 						-
 				</button>
 					
-				<button ng-click="vm.addOne($index)" class="borderRadius marginBottom btn btn-primary">
+				<button ng-click="vm.addOne($index)" class="btn btn-primary">
 					+
 				</button><span class="likes">
 			    		{{pin.likes}}
 			    	</span><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
 
-				<button ui-sref="PinInfo({id: pin._id})" class="borderRadius marginBottom btn btn-info pull-right">See Pin</button>
+				<button ui-sref="PinInfo({id: pin._id})" class="borderRadius marginBottom btn btn-info pull-right">Dive In</button><br><br>
     			</div>
 			</div>				
 		</div>

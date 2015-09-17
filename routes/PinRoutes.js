@@ -18,20 +18,42 @@ router.use('/', function (req, res, next){
 })
 
 router.param('id', function (req, res, next, id) {
-	console.log('in params function')
-	console.log(id);
-	Pin.findOne({_id:id}).populate('comments').exec(function (err, pin){
-		console.log('this is the pin ' + pin)
+	// console.log('in params function')
+	// console.log(id);
+	Pin.findOne({_id:id}).populate([{path:'comments'}, {path: 'user'}]).exec(function (err, pin){
+		// console.log('this is the pin ' + pin)
 		req.pin = pin
 		next();
 	})
+	// Pin.findOne({_id:id}).populate('user').exec(function (err, pin){
+	// 	console.log('trying to populate users')
+	// 	console.log(pin)
+	// 	// req.pin = pin
+	// 	next();
+	// })
 	// console.log('this is PIN ' +  pin)
 	// 	next();
 	// User.update({_id: })
 });
+router.post('/delete/:id', auth, function (req, res){
+	// console.log('tyring to delete pin in server')
+	Pin.update({_id: req.params.id}, {deleted: false}, function (err, response){
+		res.send();
+	})
+		
+})
+
+router.post('/:id', auth, function(req, res){
+	// console.log('inside edit pin function in server line 34')
+	// console.log(req.body)
+	Pin.update({_id: req.params.id}, req.body, function (err, response){
+		// console.log(response);
+		res.send();
+	})
+})
 
 router.post('/add/:id', auth, function (req, res) {
-  console.log('trying to add to likes')
+  // console.log('trying to add to likes')
   var pin_id = req.params.id
   console.log(pin_id)
 	  Pin.findOne({_id: pin_id}, function (err, response) {
@@ -46,7 +68,7 @@ router.post('/add/:id', auth, function (req, res) {
 })
 
 router.post('/sub/:id', auth, function (req, res) {
-  console.log('trying to add to likes')
+  // console.log('trying to add to likes')
   var pin_id = req.params.id
   console.log(pin_id)
 	  Pin.findOne({_id: pin_id}, function (err, response) {

@@ -55,8 +55,10 @@
 
 
 		o.register = function(user) {
+			console.log('we are in the register function')
 			var q = $q.defer();
 			$http.post('/users/register', user).success(function(res) {
+				console.log('made request to register user')
 				// o.status.isLoggedIn = true;
 				// o.status.username = user.username;
 				q.resolve();

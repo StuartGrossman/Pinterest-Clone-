@@ -30,6 +30,7 @@ router.post('/register', function(req, res) {
 		if(err) return res.status(500).send({err: "Issues with the server"}); //server error
 		if(!result) return res.status(400).send({err: "You messed up."}); //error in saving
 		 //completing the post.
+		 res.send();
 	})
 
 });

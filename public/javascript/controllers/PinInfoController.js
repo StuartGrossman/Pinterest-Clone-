@@ -15,6 +15,7 @@
 					console.log(res)
 					console.log('made it to getPin function')
 					vm.pin = res
+					console.log(vm.pin)
 				})
 		}
 		vm.deleteComment = function(id){
@@ -37,11 +38,11 @@
 				body: vm.newComment,
 				pin: $stateParams.id
 			};
-			HomeFactory.createComment(comment).then(function(res) {
+			HomeFactory.createComment(comment).then(function (res) {
 				vm.newComment = '';
 				// console.log(res);
 				// vm.movie.comments.push(res);
-				HomeFactory.getPin($stateParams.id).then(function(res) {
+				HomeFactory.getPin($stateParams.id).then(function (res) {
 					vm.pin = res;
 					console.log(vm.pin);
 				});
@@ -55,12 +56,31 @@
 			id = vm.pin.comments[id]._id
 			console.log('this is the comment id ' + id)
 			console.log(vm.editedComment)
-			HomeFactory.editComment(id, comment).then(function(res){
+			HomeFactory.editComment(id, comment).then(function (res){
 				console.log('finished request to change comment')
-				HomeFactory.getPin(vm.pin._id).then(function(res){
+				HomeFactory.getPin(vm.pin._id).then(function (res){
 					vm.pin = res;
 					console.log(vm.pin);
 				})
+			})
+		}
+		vm.editPin = function(id){
+			var newPin = {
+				title: vm.newTitle,
+				img: vm.newImg,
+				desc: vm.newDesc
+			}
+			console.log('trying to edit pin')
+			// console.log(newPin)
+			HomeFactory.editPin(id, newPin).then(function (res) {
+				$state.go('Home');
+			})
+		}
+		vm.deletePin = function(id){
+			console.log('trying to delete pin')
+			console.log(id)
+			HomeFactory.deletePin(id).then(function(res){
+				$state.go('Home');
 			})
 		}
 

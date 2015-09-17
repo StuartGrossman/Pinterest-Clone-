@@ -2,15 +2,13 @@
 	<h1>This is profile Page</h1>
 	<h2>Username: {{nav.pinUser.username}}</h2>
 	<div>
-		<img src="{{nav.pinUser.image}}">
+		<img class="img-circle img-responsive" src="{{nav.pinUser.image}}">
 	</div>
 	<div>
 		<h1>Your Pins</h1>
-		<div ng-repeat="pin in nav.pinUser.pins track by $index">
+		<div ng-repeat="pin in nav.pinUser.pins track by $index" ng-show="pin.deleted">
 			<div>
 				<div class="well pininfo">
-
-				
 					<h3>{{pin.title}}</h3>
 					
 					<div class="well imginfo">
@@ -20,7 +18,7 @@
 						{{pin.desc}}<br>
 						{{pin.likes}}
 					</div>
-					<button class="btn btn-warning">
+					<button ui-sref="EditPin({id: pin._id})" class="btn btn-warning">
 						Edit
 					</button>
 					<!-- <button class="btn btn-danger" ng-click="nav.deletePin($index)">

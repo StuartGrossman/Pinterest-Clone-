@@ -88,6 +88,20 @@
 			return q.promise;
 
 		}
+		o.editPin = function(id, pin){
+			var q = $q.defer();
+			$http.post('/pin/' + id, pin, getAuth()).success(function(res){
+				q.resolve();
+			})
+			return q.promise;
+		}
+		o.deletePin = function(id){
+			var q = $q.defer();
+			$http.post('/pin/delete/' + id, null, getAuth()).success(function(res){
+				q.resolve();
+			})
+			 return q.promise;
+		}
 		return o;
 	}
 })();
