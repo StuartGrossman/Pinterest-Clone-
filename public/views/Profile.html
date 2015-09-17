@@ -6,7 +6,7 @@
 	</div>
 	<div>
 		<h1>Your Pins</h1>
-		<div ng-repeat="pin in nav.pinUser.pins">
+		<div ng-repeat="pin in nav.pinUser.pins track by $index">
 			<div>
 				<div class="well pininfo">
 
@@ -14,7 +14,7 @@
 					<h3>{{pin.title}}</h3>
 					
 					<div class="well imginfo">
-						<img src="{{pin.img}}">
+						<a href="{{pin.img}}"><img class="img-responsive"  src="{{pin.img}}"><a>
 					</div>
 					<div class="well">
 						{{pin.desc}}<br>
@@ -23,9 +23,13 @@
 					<button class="btn btn-warning">
 						Edit
 					</button>
-					<button class="btn btn-danger">
+					<!-- <button class="btn btn-danger" ng-click="nav.deletePin($index)">
 						Delete
-					</button>
+					</button> -->
+				
+					<button ui-sref="PinInfo({id: pin._id})" class="btn btn-info">See Pin</button>
+				
+					
 		
 	
 				</div>

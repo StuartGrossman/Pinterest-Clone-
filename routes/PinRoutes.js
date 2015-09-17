@@ -12,15 +12,15 @@ var auth = jwt({
 	userProperty: "payload"
 })
 
-router.use('/', function(req, res, next){
+router.use('/', function (req, res, next){
 	console.log('in middle ware line 14')
 	next();
 })
 
-router.param('id', function(req, res, next, id) {
+router.param('id', function (req, res, next, id) {
 	console.log('in params function')
 	console.log(id);
-	Pin.findOne({_id:id}).populate('comments').exec(function(err, pin){
+	Pin.findOne({_id:id}).populate('comments').exec(function (err, pin){
 		console.log('this is the pin ' + pin)
 		req.pin = pin
 		next();
@@ -30,7 +30,37 @@ router.param('id', function(req, res, next, id) {
 	// User.update({_id: })
 });
 
-router.post('/', function(req, res){
+router.post('/add/:id', auth, function (req, res) {
+  console.log('trying to add to likes')
+  var pin_id = req.params.id
+  console.log(pin_id)
+	  Pin.findOne({_id: pin_id}, function (err, response) {
+	  	// console.log(response)
+	  	var updatedLikes = response.likes
+	  	// console.log(updatedLikes)
+	  	updatedLikes = updatedLikes + 1
+	  	Pin.update({_id: response.id}, {likes: updatedLikes}, function (err, likes) {
+	  		res.send()
+	  	})
+	  })
+})
+
+router.post('/sub/:id', auth, function (req, res) {
+  console.log('trying to add to likes')
+  var pin_id = req.params.id
+  console.log(pin_id)
+	  Pin.findOne({_id: pin_id}, function (err, response) {
+	  	// console.log(response)
+	  	var updatedLikes = response.likes
+	  	// console.log(updatedLikes)
+	  	updatedLikes = updatedLikes - 1
+	  	Pin.update({_id: response.id}, {likes: updatedLikes}, function (err, likes) {
+	  		res.send()
+	  	})
+	  })
+})
+
+router.post('/', function (req, res){
 	console.log(req.body)
 	var pin = new Pin(req.body)
 	pin.save(function(err, response){
@@ -45,7 +75,7 @@ router.post('/', function(req, res){
 														_id: response._id
 													}
 												}
-					}, function(err, user){
+					}, function (err, user){
 						if(err) return res.status(400).send({err: 'The client fuced up'});
 						if(!user) return res.status(500).send({err: 'the server could not find a user'});
 						console.log('found user ' + user + 'line 51');
@@ -56,9 +86,9 @@ router.post('/', function(req, res){
 	})
 })
 
-router.get('/', function(req, res){
+router.get('/', function (req, res){
 	Pin.find({})
-	.exec(function(err, pins) {
+	.exec(function (err, pins) {
 		// console.log(pins)
 		if(err) return res.status(500).send({err: "error getting all pins"});
 		if(!pins) return res.status(500).send({err: "pins do not exist"});
@@ -66,7 +96,7 @@ router.get('/', function(req, res){
 	});
 })
 
-router.get('/:id', function(req, res){
+router.get('/:id', function (req, res){
 		res.send(req.pin)
 })
 

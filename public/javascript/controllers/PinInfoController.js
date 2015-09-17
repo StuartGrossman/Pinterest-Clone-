@@ -7,6 +7,7 @@
 		var vm = this;
 		console.log('hitting movieinfo controller')
 		vm.pin = {}
+
 		if (!$stateParams.id){
 			 $state.go('Home')
 			}else{
@@ -44,6 +45,22 @@
 					vm.pin = res;
 					console.log(vm.pin);
 				});
+			})
+		}
+		vm.editComment = function(id){
+			var comment = {
+				body: vm.editedComment
+			}
+			
+			id = vm.pin.comments[id]._id
+			console.log('this is the comment id ' + id)
+			console.log(vm.editedComment)
+			HomeFactory.editComment(id, comment).then(function(res){
+				console.log('finished request to change comment')
+				HomeFactory.getPin(vm.pin._id).then(function(res){
+					vm.pin = res;
+					console.log(vm.pin);
+				})
 			})
 		}
 

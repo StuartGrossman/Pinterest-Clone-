@@ -65,6 +65,29 @@
 			})
 			return q.promise;
 		}
+		o.editComment = function(id, comment) {
+			var q = $q.defer();
+			$http.post('/comments/' + id, comment, getAuth()).success(function(res){
+				console.log('trying to make request to change comment')
+				q.resolve(res);
+			})
+			return q.promise; 
+		}
+		o.addOne = function(id){
+			var q = $q.defer();
+			$http.post('/pin/add/' + id, null, getAuth()).success(function(res){
+				q.resolve(res);
+			})
+			return q.promise;
+		}
+		o.subOne = function(id){
+			var q = $q.defer();
+			$http.post('/pin/sub/' + id, null, getAuth()).success(function(res){
+				q.resolve(res);
+			})
+			return q.promise;
+
+		}
 		return o;
 	}
 })();

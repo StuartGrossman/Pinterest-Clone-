@@ -4,10 +4,10 @@
 	<div class="well pininfo">
 
 		<div class="well">
-			<h1>{{vm.pin.title}}</h1>
+			<span class="pintext"><h1>{{vm.pin.title}}</h1> <h3>{{vm.pin.likes}}</h3></span>
 		</div>
 		<div class="well imginfo">
-			<img src="{{vm.pin.img}}">
+			<img class="img-responsive" src="{{vm.pin.img}}">
 		</div>
 		<div class="well">
 			{{vm.pin.desc}}
@@ -25,22 +25,37 @@
 				<button class="btn btn-danger" ng-click="addComment = false;">Cancel</button>
 			</div>
 		</div>
-		 <div ng-repeat="comment in vm.pin.comments">
-		<div class="well">
-			
-			<div>
-				{{comment.name}} : {{comment.body}} 
-				<div ng-show="comment.user === nav.status.id">
-					<button class="btn btn-warning">
-						Edit
-					</button>
-					<button class="btn btn-danger">
-						Delete
-					</button>
+		
+			<div ng-repeat="comment in vm.pin.comments track by $index" ng-if="comment.deleted === false">
+				<div class="well">
+					
+					
+						<div>
+							<img  src="{{comment.userimg}}" class="img-responsive">
+						</div>
+						<br>
+						<br>
+						<div class="well">
+						{{comment.name}} : {{comment.body}}
+						</div>
+						<div ng-show="comment.user === nav.status.id">
+							<button class="btn btn-warning" ng-show="!editComment" ng-click="editComment = true;">
+							Edit</button>
+							<button class="btn btn-danger" ng-click="vm.deleteComment($index)">
+								Delete
+							</button>
+							<div class="form-inline" ng-show="editComment">
+										<input class="form-control" style="width: 80%" ng-model="vm.editedComment" placeholder="{{comment.body}}">
+										<button class="btn btn-success" ng-click="editComment = false; vm.editComment($index);">Submit</button>
+										<button class="btn btn-danger" ng-click="editComment = false;">Cancel</button>
+							</div>
+							<br>
+							
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+		
 	</div>
 </center>
 

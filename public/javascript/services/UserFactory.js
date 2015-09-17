@@ -81,6 +81,7 @@
 
 		o.logout = function() {
 			removeToken();
+			o.status = {};
 			$rootScope._user = isLoggedIn();
 		}
 
