@@ -1,4 +1,4 @@
-<form class="well container" ng-submit="vm.editPin(vm.pin._id)">
+<form class="well container animated" ng-submit="vm.editPin(vm.pin._id)" ng-class="vm.class">
 	<div>
 		<label>Title</label>
 		<input class="form-control" placeholder="{{vm.pin.title}}" ng-model="vm.newTitle">
@@ -6,7 +6,7 @@
 		<input class="form-control" placeholder="{{vm.pin.img}}" ng-model="vm.newImg"><span><img class="img-responsive" src="{{vm.pin.img}}"></span>
 		<label>Description</label>
 		<input class="form-control" placeholder="{{vm.pin.desc}}" ng-model="vm.newDesc">
-		<center><button type="submit" class="btn btn-primary" ng-disabled="!vm.newTitle || !vm.newImg || !vm.newDesc">Submit</button>
+		<center><button type="submit" class="btn btn-primary" ng-disabled="!vm.newTitle || !vm.newImg || !vm.newDesc" ng-click="vm.class='zoomOutDown'">Submit</button>
 		<center>
 	</div>
 	</form>

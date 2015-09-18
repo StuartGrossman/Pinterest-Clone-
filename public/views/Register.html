@@ -1,4 +1,4 @@
-<form class="well container" ng-submit="nav.register()">
+<form class="well container animated" ng-class="nav.class" ng-submit="nav.register()">
 	<label>Username</label> <br/>
 	<input class="form-control" placeholder="Username..." ng-model="nav.user.username" required />
 	<label>Email</label> <br/>
@@ -12,6 +12,6 @@
 	<label>Confirm Password</label> <br/>
 	<input type="password" class="form-control" placeholder="Confirm Password..." ng-model="nav.user.confirmPass" required />
 	<div style="text-align: center;">
-		<button type="submit" class="btn btn-lg btn-success" ng-disabled="!nav.user.username || !nav.user.name || !nav.user.email || !nav.user.image || !nav.user.password || !(nav.user.password === nav.user.confirmPass)">Submit</button>
+		<button type="submit" class="btn btn-lg btn-success" ng-disabled="!nav.user.username || !nav.user.name || !nav.user.email || !nav.user.image || !nav.user.password || !(nav.user.password === nav.user.confirmPass)" ng-click="nav.class='fadeOutLeft'">Submit</button>
 	</div>
 </form>

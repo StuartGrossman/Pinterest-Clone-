@@ -1,15 +1,15 @@
 (function(){
 	'use strict'
 	angular.module('app').controller('PinInfoController', PinInfoController);
-	PinInfoController.$inject = ['$stateParams', '$state', 'HomeFactory', 'UserFactory']
+	PinInfoController.$inject = ['$stateParams', '$state', 'HomeFactory', 'UserFactory', '$timeout']
 
-	function PinInfoController($stateParams, $state, HomeFactory, UserFactory){
+	function PinInfoController($stateParams, $state, HomeFactory, UserFactory, $timeout){
 		var vm = this;
 		console.log('hitting movieinfo controller')
 		vm.pin = {}
 		vm.status = UserFactory.status
 		console.log(vm.status)
-
+		vm.class = 'zoomInDown';
 		if (!$stateParams.id){
 			 $state.go('Home')
 			}else{
@@ -75,7 +75,11 @@
 			// console.log('trying to edit pin')
 			// console.log(newPin)
 			HomeFactory.editPin(id, newPin).then(function (res) {
-				$state.go('Home');
+				$timeout(function() {
+					$state.go('Home');
+					vm.class="zoomInDown"
+				}, 400);
+				
 			})
 		}
 		vm.deletePin = function(id){
