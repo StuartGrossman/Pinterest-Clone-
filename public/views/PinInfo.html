@@ -1,50 +1,69 @@
 <div ng-controller="PinInfoController as vm">
-	<center>
-	
-	<div class="well pininfo">
-		<div class="well">
-			<span>
-				<h3>{{vm.pin.user.name}}</h3> <span><img class="img-responsive img-circle" src="{{vm.pin.user.image}}"> 
-				<button ng-click="vm.addFriend(vm.pin.user._id)" ng-show="vm.pin.user._id !== vm.status._id" class="btn btn-success">
-					Add {{vm.pin.user.name}} as Friend!
-				</button>
-				<!-- {{vm.pin.user}} -->
-			</span>
-			</span>
-			<span class="pintext"><h1>{{vm.pin.title}}</h1> <h3>{{vm.pin.likes}}</h3></span>
-		</div>
-		<div class="well imginfo">
-			<img class="img-responsive" src="{{vm.pin.img}}">
-		</div>
-		<div class="well">
-			{{vm.pin.desc}}
-		</div>
-		
-	
-	</div>
 
+<center>
+	<div class="well pininfo animated flipInX">
+		
+			
+		
+			<div>
+				<span style="font-size: 30px;">{{vm.pin.title}}
+					<span class="glyphicon glyphicon-heart" aria-hidden="true">{{vm.pin.likes}}</span>
+				</span>
+					<div class="well imginfo">
+						<img class="img-responsive" src="{{vm.pin.img}}">
+						<br>
+							<span>
+								<span><img id="commentImg" class="img-responsive img-circle" src="{{vm.pin.user.image}}"> 
+								</span>
+								Posted By: <span style="font-size: 15px;">{{vm.pin.user.name}}</span> 
+								
+							</span>
+					<!-- <button ng-click="vm.addFriend(vm.pin.user._id)" ng-show="vm.pin.user._id !== vm.status._id" class="btn btn-success">
+						Add {{vm.pin.user.name}} as Friend!
+					</button> -->
+					<!-- {{vm.pin.user}} -->
+				
+			
+					</div>
+
+				
+				
+				
+				<div class="well">
+					<h2>{{vm.pin.desc}}<h2>
+				</div>
+			</div>
+	
+	
 	<div class="well container" ng-if="nav.status.id">
 		<div style="text-align:center;">
 			<button class="btn btn-lg btn-primary" ng-show="!addComment" ng-click="addComment = true;">Add Comment</button>
 			<div class="form-inline" ng-show="addComment">
 				<input class="form-control" style="width: 80%" ng-model="vm.newComment" placeholder="Comment...">
-				<button class="btn btn-success" ng-click="addComment = false; vm.createComment();">Submit</button>
+				<button class="btn btn-success" ng-click="addComment = false; vm.createComment();">Submit</button><br><br>
 				<button class="btn btn-danger" ng-click="addComment = false;">Cancel</button>
 			</div>
 		</div>
-		
-			<div ng-repeat="comment in vm.pin.comments track by $index" ng-if="comment.deleted === false">
+		<br><br>
+		<div ng-repeat="comment in vm.pin.comments track by $index" ng-if="comment.deleted === false">
 				<div class="well">
 					
 					
 						<div>
-							<img  src="{{comment.userimg}}" class="img-responsive img-circle">
+							<span>
+								<img  src="{{comment.userimg}}" id="commentImg" class="img-responsive img-circle">
+								  
+								  <span style="font-size: 30px;">{{comment.name}} -  
+								  	<span style="font-size: 20px;">{{comment.body}}</span>
+								</span>
+					
+								  	
+								 
+							</span>
 						</div>
 						<br>
-						<br>
-						<div class="well">
-						{{comment.name}} : {{comment.body}}
-						</div>
+						
+					
 						<div ng-show="comment.user === nav.status.id">
 							<button class="btn btn-warning" ng-show="!editComment" ng-click="editComment = true;">
 							Edit</button>
@@ -56,12 +75,13 @@
 										<button class="btn btn-success" ng-click="editComment = false; vm.editComment($index);">Submit</button>
 										<button class="btn btn-danger" ng-click="editComment = false;">Cancel</button>
 							</div>
+							
 							<br>
 							
 						</div>
 					</div>
 				</div>
-			</div>
+		</div>
 		
 	</div>
 </center>

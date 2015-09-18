@@ -8,7 +8,7 @@ passport.use(new LocalStrategy(function(username, password, done) { //This passw
 	.exec(function(err, user) {  
 		if(err) return done(err);
 		if(!user) return done(err);
-		if(!user.checkPassword(password)) return res.status(400).send({err: "Invalid username and password combination."});
+		if(!user.checkPassword(password)) return done(err);
     return done(null, user);
 	});
 }));

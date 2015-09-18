@@ -37,6 +37,9 @@
 				console.log(vm.pinUser)
 			})
 		}
-		vm.getUser();
+		if(vm.status.id){
+				vm.getUser();
+		}
+	
 	}
 })();

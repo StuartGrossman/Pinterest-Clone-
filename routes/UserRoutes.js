@@ -13,7 +13,7 @@ var PinComment = mongoose.model('PinComment'); //Multiple ways of bringing authe
 router.param('id', function (req, res, next, id){
 	User.findOne({_id: id}).populate('pins').exec(function (err, user_id){
 
-		console.log('this is the user ' + user_id._id)
+		// console.log('this is the user ' + user_id._id)
 			req.fulluser = user_id
 		// user.populate('pins', function(){
 			req.user = user_id._id
@@ -25,27 +25,27 @@ router.param('id', function (req, res, next, id){
 		// })
 	})
 })
-router.param('userid', function (req, res, next, id){
-	console.log('trying to add friend')
-	console.log(id);
-	req.userfriend = id 
+// router.param('userid', function (req, res, next, id){
+// 	console.log('trying to add friend')
+// 	console.log(id);
+// 	req.userfriend = id 
 	
-	next();
-})
-router.post('/add/friend/:id/:userid', function (req, res){
-	// console.log(req)
-	// console.log('-------------------')
-	// console.log(req.user)
-	// console.log('-------------' + 'this is user we are adding friends too id')
-	// console.log(req.userfriend)
-	// User.findOne({_id: req.userfriend}).exec(function(err, response){
-	// 	response.friends.push(req.user);
-	// 	console.log(response.friends)
-	// })
-	User.update({_id: req.userfriend}, {$push: { friends: { _id: req.user} } } , function (err, response){
-		console.log('updated user with friend')
-	})
-})
+// 	next();
+// })
+// router.post('/add/friend/:id/:userid', function (req, res){
+// 	// console.log(req)
+// 	// console.log('-------------------')
+// 	// console.log(req.user)
+// 	// console.log('-------------' + 'this is user we are adding friends too id')
+// 	// console.log(req.userfriend)
+// 	// User.findOne({_id: req.userfriend}).exec(function(err, response){
+// 	// 	response.friends.push(req.user);
+// 	// 	console.log(response.friends)
+// 	// })
+// 	User.update({_id: req.userfriend}, {$push: { friends: { _id: req.user} } } , function (err, response){
+// 		console.log('updated user with friend')
+// 	})
+// })
 
 router.post('/register', function(req, res) {
 	// console.log('in the register function')

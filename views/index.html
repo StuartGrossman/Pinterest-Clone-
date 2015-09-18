@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap_theme.css">
+	<link rel="stylesheet" type="text/css" href="/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
 	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/cosmo/bootstrap.min.css">
 </head>
@@ -14,21 +15,36 @@
 			<nav class="navbar navbar-default">
 			  <div class="container-fluid">
 			    <!-- Brand and toggle get grouped for better mobile display -->
-			    <div class="navbar-header">
+			    <div class="row">
 			      <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 			        <span class="sr-only">Toggle navigation</span>
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			      </button> -->
-			      <a class="navbar-brand" ui-sref="Home">Pint</a>
-			      <a ng-show="nav.status.username" class="navbar-brand" ui-sref="CreatePin">Create Pin</a>
-			      
-				  <a ng-show="!nav.status.username" class="navbar-brand" ui-sref="RegisterUser">Register</a>
-				  <a ng-show="!nav.status.username" class="navbar-brand" ui-sref="LogIn">Login</a>
-				  <a ng-show="nav.status.username" class="navbar-brand" ui-sref="Profile" ng-click="nav.getUser()">{{nav.status.username}}</a>
-				  <a ng-show="nav.status.username" class="navbar-brand" ng-click="nav.logout();">LogOut</a>
-				  <input class="navbar-brand" placeholder="search Pin by Name" ng-model="searchPin">
+
+			      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+				      <a class="navbar-brand" ui-sref="Home">Pint</a>
+				      <a ng-show="nav.status.username" class="navbar-brand" ui-sref="CreatePin">Create Pin</a>
+				      <a ng-show="!nav.status.username" class="navbar-brand" ui-sref="RegisterUser">Register</a>
+					  <a ng-show="!nav.status.username" class="navbar-brand" ui-sref="LogIn">Login</a>
+					
+					  <a ng-show="nav.status.username" style="text-align: right" class="navbar-brand pull-right" ng-click="nav.logout();">LogOut</a>
+					  <a ng-show="nav.status.username" class="navbar-brand pull-right" ui-sref="Profile" ng-click="nav.getUser()">{{nav.status.username}}</a>
+			  	  </div>
+
+			  
+
+			      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			      	  <input class="form-control" placeholder="search Pin by Name" ng-model="searchPin">
+					  
+				  
+				  </div>
+				  
+				
+				  
+
+				 
 			      
 			    <!-- 
 			      <a ng-show="!nav.status.username"class="navbar-brand navbar-right" ui-sref="">{{nav.status.username}}</a>
